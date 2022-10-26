@@ -8,7 +8,7 @@ The minimum required options is a path to an input file:
 ```
 
 ## Template String Example
-In this example a string is provided in the template file directly.  Arguments in the template are replaced with specified enumerations if they are in the template as {{varName}}.
+In this example a string is provided in the template file directly.  Arguments in the template are replaced with specified enumerations if they are in the template as {{varName}}.  The built in argument {{id}} is automatically supplied and is replaced with the specific case id. 
 
 ### templateStringExample.yaml
 ```yaml
@@ -30,7 +30,7 @@ generator:
   !enumerator::generators::TemplateGenerator
   template: |
     #!/bin/bash
-    echo "Hello World {{mu}} and {{density}} with vel {{vel}}
+    echo "Hello World {{mu}} and {{density}} with vel {{vel}} from case {{id}}"
   extension: .sh
   outputDirectory: outputs
 reporters:
@@ -63,7 +63,7 @@ reporters:
 ```shell
 #!/bin/bash
 
-echo "Hello World {{mu}} and {{density}}
+echo "Hello World {{mu}} and {{density}} from case {{id}}"
 ```
 
 ## Building Enumerator

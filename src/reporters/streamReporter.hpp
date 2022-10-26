@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "reporter.hpp"
+
 namespace enumerator::reporters {
 
 class StreamReporter : public Reporter {

@@ -1,7 +1,9 @@
 target_sources(enumeratorLibrary
+        PRIVATE
+        streamReporter.cpp
+        fileReporter.cpp
+
         PUBLIC
         streamReporter.hpp
-        streamReporter.cpp
         fileReporter.hpp
-        fileReporter.cpp
         )

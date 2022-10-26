@@ -1,7 +1,9 @@
 target_sources(enumeratorLibrary
+        PRIVATE
+        templateGenerator.cpp
+        fileTemplateGenerator.cpp
+
         PUBLIC
         templateGenerator.hpp
-        templateGenerator.cpp
         fileTemplateGenerator.hpp
-        fileTemplateGenerator.cpp
         )

@@ -18,8 +18,12 @@ void enumerator::Enumerator::ProcessOptionSet(const std::vector<std::shared_ptr<
         // build the name
         auto caseName = BuildCaseName(caseCount++);
 
+        // add the option to get the case name
+        auto optionSetCopy = optionSet;
+        optionSetCopy[caseNameKey] = caseName;
+
         // Generate the value
-        generator->Generate(caseName, optionSet);
+        generator->Generate(caseName, optionSetCopy);
 
         // report the value to the reporters
         for (const auto& reporter : reporters) {

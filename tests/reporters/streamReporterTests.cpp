@@ -1,6 +1,6 @@
 #include <enumerator.hpp>
 #include <memory>
-#include "enumeration.hpp"
+#include "enumerations/enumeration.hpp"
 #include "gtest/gtest.h"
 #include "reporters/streamReporter.hpp"
 
@@ -29,7 +29,7 @@ TEST_P(StreamReporterTestFixture, ShouldReport) {
     ASSERT_EQ(GetParam().expectedString, actualStream.str());
 }
 
-INSTANTIATE_TEST_SUITE_P(SutherlandTests, StreamReporterTestFixture,
+INSTANTIATE_TEST_SUITE_P(StreamReporterTests, StreamReporterTestFixture,
                          testing::Values((StreamReporterTestParameters){.cases = {std::make_pair("case1.", std::map<std::string, std::string>{{"a", "1"}, {"b", "2"}})},
                                                                         .expectedString = "case1.\n\ta: 1\n\tb: 2\n"},
                                          (StreamReporterTestParameters){.cases = {std::make_pair("case1.", std::map<std::string, std::string>{{"a", "1"}, {"b", "2"}}),

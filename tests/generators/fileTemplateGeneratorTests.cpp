@@ -1,7 +1,7 @@
 #include <enumerator.hpp>
 #include <fstream>
 #include <memory>
-#include "enumeration.hpp"
+#include "enumerations/enumeration.hpp"
 #include "generators/fileTemplateGenerator.hpp"
 #include "gtest/gtest.h"
 
@@ -48,7 +48,7 @@ TEST_P(FileTemplateGeneratorTestFixture, ShouldReport) {
     }
 }
 
-INSTANTIATE_TEST_SUITE_P(SutherlandTests, FileTemplateGeneratorTestFixture,
+INSTANTIATE_TEST_SUITE_P(FileTemplateGeneratorTests, FileTemplateGeneratorTestFixture,
                          testing::Values((FileTemplateGeneratorTestParameters){.templateString = "Start {{a}} and add {{b}} with {{a}}\n\t {{c}} + {{a}} + {{b}}\n",
                                                                                .cases = {std::make_pair("case1", std::map<std::string, std::string>{{"a", "1"}, {"b", "2"}})},
                                                                                .expectedFiles = {{"case1.txt", "Start 1 and add 2 with 1\n\t {{c}} + 1 + 2\n"}}},

@@ -60,19 +60,7 @@ int main(int argc, char** args) {
     }
 
     // create the yaml parser
-    std::shared_ptr<cppParser::YamlParser> parser = std::make_shared<cppParser::YamlParser>(inputFilePath, [inputFilePath](auto fileName) {
-        // first check if this is a file
-        if (std::filesystem::exists(fileName)) {
-            return std::filesystem::path(fileName);
-        }
-
-        if(std::filesystem::path(fileName).is_relative()){
-            // try a local path
-            return inputFilePath.parent_path() / fileName;
-        }
-
-        return std::filesystem::path(fileName);
-    });
+    std::shared_ptr<cppParser::YamlParser> parser = std::make_shared<cppParser::YamlParser>(inputFilePath);
 
     // run the enumeration
     auto enumerator = parser->GetByName<enumerator::Enumerator>("");

@@ -1,7 +1,7 @@
 #include <enumerator.hpp>
 #include <fstream>
 #include <memory>
-#include "enumeration.hpp"
+#include "enumerations/enumeration.hpp"
 #include "generators/templateGenerator.hpp"
 #include "gtest/gtest.h"
 

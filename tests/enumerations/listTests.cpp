@@ -27,7 +27,7 @@ TEST(ListTests, ShouldCreateFromList) {
 TEST(ListTests, ShouldCreateFromRegistar) {
     // arrange
     std::shared_ptr<cppParserTesting::MockFactory> mockFactory = std::make_shared<cppParserTesting::MockFactory>();
-    const std::string expectedClassType = "";  // should be default
+    const std::string expectedClassType;  // should be default
     EXPECT_CALL(*mockFactory, GetClassType()).Times(::testing::Exactly(1)).WillOnce(::testing::ReturnRef(expectedClassType));
     EXPECT_CALL(*mockFactory, Get(cppParser::ArgumentIdentifier<std::string>{.inputName = "name"})).Times(::testing::Exactly(1)).WillOnce(::testing::Return("listName1"));
     EXPECT_CALL(*mockFactory, Get(cppParser::ArgumentIdentifier<std::vector<std::string>>{.inputName = "values"}))
@@ -35,7 +35,8 @@ TEST(ListTests, ShouldCreateFromRegistar) {
         .WillOnce(::testing::Return(std::vector<std::string>{"2.0", "3.0", "4.0"}));
 
     // act
-    auto instance = ResolveAndCreate<enumerator::enumerations::Enumeration>(mockFactory);
+    auto createMethod = Creator<enumerator::enumerations::Enumeration>::GetCreateMethod(mockFactory->GetClassType());
+    auto instance = createMethod(mockFactory);
 
     // assert
     ASSERT_TRUE(instance != nullptr) << " should create an instance of the ParsedSeries";

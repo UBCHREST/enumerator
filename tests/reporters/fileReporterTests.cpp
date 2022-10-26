@@ -1,6 +1,6 @@
 #include <enumerator.hpp>
 #include <memory>
-#include "enumeration.hpp"
+#include "enumerations/enumeration.hpp"
 #include "gtest/gtest.h"
 #include "reporters/fileReporter.hpp"
 
