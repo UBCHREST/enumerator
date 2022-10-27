@@ -1,9 +1,10 @@
 #include "templateGenerator.hpp"
 #include <fstream>
+#include <iostream>
 #include <regex>
 
 enumerator::generators::TemplateGenerator::TemplateGenerator(std::string templateString, std::string extension, std::filesystem::path outputDirectoryIn)
-    : templateString(std::move(templateString)), outputDirectory(outputDirectoryIn), extension(extension) {
+    : templateString(std::move(templateString)), outputDirectory(std::filesystem::absolute(outputDirectoryIn)), extension(extension) {
     // create the output directory if needed
     create_directories(outputDirectory);
 }

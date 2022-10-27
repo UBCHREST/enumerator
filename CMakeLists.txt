@@ -7,7 +7,7 @@ project(Enumerator VERSION 0.1.1)
 set(CMAKE_CXX_STANDARD 17)
 
 # Create the project
-add_library(enumeratorLibrary)
+add_library(enumeratorLibrary SHARED)
 
 # FetContent will allow downloading of other libraries
 include(FetchContent)
@@ -110,3 +110,13 @@ export(EXPORT enumeratorTargets
         FILE "${CMAKE_CURRENT_BINARY_DIR}/cmake/enumeratorTargets.cmake"
         NAMESPACE CHREST::
         )
+
+## update the install rpaths
+if (APPLE)
+    set(CMAKE_MACOSX_RPATH 1)
+    set_target_properties(enumerator PROPERTIES
+            INSTALL_RPATH "@loader_path;@loader_path/...;@executable_path;@executable_path/../${CMAKE_INSTALL_LIBDIR};@rpath")
+elseif (UNIX)
+    set_target_properties(enumerator PROPERTIES
+            INSTALL_RPATH "$ORIGIN:$ORIGIN/../${CMAKE_INSTALL_LIBDIR}:$ORIGIN/...")
+endif ()
