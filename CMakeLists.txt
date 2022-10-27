@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 
 # Create the new project
-project(Enumerator VERSION 0.1.1)
+project(Enumerator VERSION 0.1.2)
 
 # Set the standards
 set(CMAKE_CXX_STANDARD 17)
